@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Deploy To Kubernetes') {
             steps {
-                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'MSK', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://BD68EAD1ED9122A6D195299D7C927A4F.gr7.us-east-2.eks.amazonaws.com']]) {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'SAI', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://6669514C16CA6F2C5F369D309AF9EE7C.gr7.us-east-2.eks.amazonaws.com']]) {
                     sh "kubectl apply -f deployment-service.yml"
                     
                 }
@@ -13,7 +13,7 @@ pipeline {
         
         stage('verify Deployment') {
             steps {
-                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'MSK', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://BD68EAD1ED9122A6D195299D7C927A4F.gr7.us-east-2.eks.amazonaws.com']]) {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'SAI', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://6669514C16CA6F2C5F369D309AF9EE7C.gr7.us-east-2.eks.amazonaws.com']]) {
                     sh "kubectl get svc -n webapps"
                 }
             }
